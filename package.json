@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "concurrently": "4.1.0",
+    "husky": "2.4.0",
+    "prettier": "1.18.2",
+    "pretty-quick": "1.11.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "license": "MIT",
+  "resolutions": {
+    "graphql": "14.3.1"
+  },
+  "scripts": {
+    "pretty": "prettier --write 'packages/{client,server}/src/**/*.{ts,tsx}'",
+    "build": "concurrently --kill-others \"yarn workspace @hack/server build\" \"yarn workspace @hack/client build\"",
+    "start": "concurrently --kill-others \"yarn workspace @hack/server start\" \"yarn workspace @hack/client start\""
+  },
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "client",
+      "server"
+    ]
+  }
+}
